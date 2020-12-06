@@ -6,5 +6,10 @@ pipeline{
                 git credentialsId: 'github', url: 'https://github.com/chjithin10/myapp-ansible'
             }
         }
+        stage('Execute Ansible Playbook'){
+            steps{
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible2', inventory: 'dev.inv', playbook: 'apache.yml'
+            }
+        }
    }
 }
